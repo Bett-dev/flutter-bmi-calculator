@@ -17,6 +17,8 @@ class InputPage extends StatefulWidget {
 }
 
 double height = 180;
+int weight = 74;
+int age = 19;
 
 class _InputPageState extends State<InputPage> {
   Gender? selectedGender;
@@ -67,7 +69,7 @@ class _InputPageState extends State<InputPage> {
             ),
             Expanded(
               child: ReusableCard(
-                cardchild:  Column(
+                cardchild: Column(
                   children: [
                     const Text(
                       'HEIGHT',
@@ -82,7 +84,7 @@ class _InputPageState extends State<InputPage> {
                       textBaseline: TextBaseline.alphabetic,
                       children: [
                         Text(
-                          height.toStringAsFixed(1),
+                          height.toStringAsFixed(0),
                           style: const TextStyle(
                               color: KtextColor,
                               fontSize: 60,
@@ -97,40 +99,95 @@ class _InputPageState extends State<InputPage> {
                         )
                       ],
                     ),
-                     SliderTheme(
+                    SliderTheme(
                       data: const SliderThemeData(
-                        thumbShape:RoundSliderThumbShape(disabledThumbRadius: 18,enabledThumbRadius: 18),
-                        overlayShape: RoundSliderOverlayShape(overlayRadius: 32),
+                        thumbShape: RoundSliderThumbShape(
+                            disabledThumbRadius: 18, enabledThumbRadius: 18),
+                        overlayShape:
+                            RoundSliderOverlayShape(overlayRadius: 32),
                         activeTrackColor: Color(0xfffffff),
                         inactiveTrackColor: Color(0xff111428),
                         thumbColor: Color(0xffeb1555),
                         overlayColor: Color(0xff31142f),
                       ),
-                      child: Slider(value: height, max:220,min: 120, onChanged: (double value) => setState(() {
-                        height=value;
-                      },
-                      ),
+                      child: Slider(
+                        value: height,
+                        max: 220,
+                        min: 120,
+                        onChanged: (double value) => setState(
+                          () {
+                            height = value;
+                          },
+                        ),
                       ),
                     ),
-                
                   ],
                 ),
                 colour: KinativeCardColor,
               ),
             ),
-            const Expanded(
+            Expanded(
               child: Row(
                 children: [
                   Expanded(
                     child: ReusableCard(
-                      cardchild: Column(children: [
-                        
-                      ],),
+                      cardchild: Column(
+                        children: [
+                          const Text(
+                            'WEIGHT',
+                            style: TextStyle(
+                                color: KregularText,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 24),
+                          ),
+                          Text(
+                            weight.toStringAsFixed(0),
+                            style: const TextStyle(
+                                color: KtextColor,
+                                fontSize: 60,
+                                fontWeight: FontWeight.bold),
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Rowbutton(icon: Icons.remove),
+                              SizedBox(width: 10,),
+                              Rowbutton(icon: Icons.add),
+                            ],
+                          )
+                        ],
+                      ),
                       colour: KinativeCardColor,
                     ),
                   ),
                   Expanded(
                     child: ReusableCard(
+                      cardchild: Column(
+                        children: [
+                          const Text(
+                            'AGE',
+                            style: TextStyle(
+                                color: KregularText,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 24),
+                          ),
+                          Text(
+                            age.toStringAsFixed(0),
+                            style: const TextStyle(
+                                color: KtextColor,
+                                fontSize: 60,
+                                fontWeight: FontWeight.bold),
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Rowbutton(icon: Icons.remove),
+                              const SizedBox(width: 10,),
+                              Rowbutton(icon: Icons.add),
+                            ],
+                          )
+                        ],
+                      ),
                       colour: KinativeCardColor,
                     ),
                   )
@@ -150,9 +207,28 @@ class _InputPageState extends State<InputPage> {
                 )),
               ],
             ),
-           
           ],
         ));
+  }
+}
+
+class Rowbutton extends StatelessWidget {
+  final IconData icon;
+  Rowbutton({required this.icon}) {}
+
+  @override
+  Widget build(BuildContext context) {
+    return RawMaterialButton(
+      elevation: 6,
+      constraints: BoxConstraints.tight(Size(60, 60)),
+      shape: CircleBorder(),
+      fillColor: Color(0xff1c1f32),
+      onPressed: () {},
+      child: Icon(
+        icon,
+        size: 36,
+      ),
+    );
   }
 }
 
