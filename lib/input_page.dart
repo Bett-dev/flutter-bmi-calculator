@@ -151,7 +151,9 @@ class _InputPageState extends State<InputPage> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Rowbutton(icon: Icons.remove),
-                              SizedBox(width: 10,),
+                              SizedBox(
+                                width: 10,
+                              ),
                               Rowbutton(icon: Icons.add),
                             ],
                           )
@@ -182,7 +184,9 @@ class _InputPageState extends State<InputPage> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Rowbutton(icon: Icons.remove),
-                              const SizedBox(width: 10,),
+                              const SizedBox(
+                                width: 10,
+                              ),
                               Rowbutton(icon: Icons.add),
                             ],
                           )
@@ -214,7 +218,8 @@ class _InputPageState extends State<InputPage> {
 
 class Rowbutton extends StatelessWidget {
   final IconData icon;
-  Rowbutton({required this.icon}) {}
+  final VoidCallback press;
+  Rowbutton({required this.icon, required this.press});
 
   @override
   Widget build(BuildContext context) {
@@ -223,7 +228,7 @@ class Rowbutton extends StatelessWidget {
       constraints: BoxConstraints.tight(Size(60, 60)),
       shape: CircleBorder(),
       fillColor: Color(0xff1c1f32),
-      onPressed: () {},
+      onPressed: press,
       child: Icon(
         icon,
         size: 36,
