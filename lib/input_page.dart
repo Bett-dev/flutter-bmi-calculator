@@ -1,9 +1,10 @@
+import 'package:bmicalculator/results_page.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 enum Gender { male, female }
 
-const KactiveCardColor = Color(0xff272a4d);
+const kActiveCardColor = Color(0xff272a4d);
 const KinativeCardColor = Color(0xff0e1125);
 const KtextColor = Color(0xfffefefe);
 const Kcolor = const Color(0xff0e1125);
@@ -16,7 +17,7 @@ class InputPage extends StatefulWidget {
   State<InputPage> createState() => _InputPageState();
 }
 
-double height = 180;
+double height = 173;
 int weight = 74;
 int age = 19;
 
@@ -44,7 +45,7 @@ class _InputPageState extends State<InputPage> {
                     child: ReusableCard(
                       onpress: () => updateGender(CurrentGender: Gender.male),
                       colour: selectedGender == Gender.male
-                          ? KactiveCardColor
+                          ? kActiveCardColor
                           : KinativeCardColor,
                       cardchild: CardContent(
                         label: 'MALE',
@@ -56,7 +57,7 @@ class _InputPageState extends State<InputPage> {
                     child: ReusableCard(
                       onpress: () => updateGender(CurrentGender: Gender.female),
                       colour: selectedGender == Gender.female
-                          ? KactiveCardColor
+                          ? kActiveCardColor
                           : KinativeCardColor,
                       cardchild: CardContent(
                         label: 'FEMALE',
@@ -150,11 +151,25 @@ class _InputPageState extends State<InputPage> {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Rowbutton(icon: Icons.remove),
-                              SizedBox(
+                              Rowbutton(
+                                icon: Icons.remove,
+                                press: () {
+                                  setState(() {
+                                    weight = weight > 30 ? weight - 1 : weight;
+                                  });
+                                },
+                              ),
+                              const SizedBox(
                                 width: 10,
                               ),
-                              Rowbutton(icon: Icons.add),
+                              Rowbutton(
+                                icon: Icons.add,
+                                press: () {
+                                  setState(() {
+                                    weight = weight < 220 ? weight + 1 : weight;
+                                  });
+                                },
+                              ),
                             ],
                           )
                         ],
@@ -183,11 +198,25 @@ class _InputPageState extends State<InputPage> {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Rowbutton(icon: Icons.remove),
+                              Rowbutton(
+                                icon: Icons.remove,
+                                press: () {
+                                  setState(() {
+                                    age = age > 12 ? age - 1 : age;
+                                  });
+                                },
+                              ),
                               const SizedBox(
                                 width: 10,
                               ),
-                              Rowbutton(icon: Icons.add),
+                              Rowbutton(
+                                icon: Icons.add,
+                                press: () {
+                                  setState(() {
+                                    age = age < 140 ? age + 1 : age;
+                                  });
+                                },
+                              ),
                             ],
                           )
                         ],
@@ -198,16 +227,25 @@ class _InputPageState extends State<InputPage> {
                 ],
               ),
             ),
-            const Row(
+            Row(
               children: [
                 Expanded(
-                    child: BottomAppBar(
-                  color: Color(0xFFEB1555),
-                  child: Center(
-                      child: Text(
-                    'CALCULATE YOU BMI',
-                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.w600),
-                  )),
+                    child: GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const ResultsPage()));
+                  },
+                  child: const BottomAppBar(
+                    color: Color(0xFFEB1555),
+                    child: Center(
+                        child: Text(
+                      'CALCULATE YOUR BMI',
+                      style:
+                          TextStyle(fontSize: 24, fontWeight: FontWeight.w600),
+                    )),
+                  ),
                 )),
               ],
             ),
