@@ -10,6 +10,7 @@ class BmiApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      title: "BMI",
       debugShowCheckedModeBanner: false,
       theme: ThemeData.dark().copyWith(
         primaryColor: const Color(0xff111639),

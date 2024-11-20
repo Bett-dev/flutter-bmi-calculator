@@ -1,3 +1,4 @@
+import 'package:bmicalculator/constants.dart';
 import 'package:flutter/material.dart';
 
 class ResultsPage extends StatelessWidget {
@@ -6,12 +7,40 @@ class ResultsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Center(child: Text('BMI CALCULATOR')),
-      ),
-      body: Center(
-        child: Text('Results page'),
-      ),
-    );
+        backgroundColor: Color(0xff0a0d22),
+        appBar: AppBar(
+          title: const Center(child: Text('BMI CALCULATOR')),
+        ),
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Container(
+              child: Text(
+                'Your Result',
+                style: kLargeTextStyle,
+              ),
+            ),
+    
+            const Text(
+              'NORMAL',
+              style: TextStyle(color: Color(0xff209d60),fontSize: 24),
+            ),
+            const Text(
+              '22.1',
+              style: kNumberTextStyle,
+            ),
+            Container(
+              width: double.infinity,
+              height: 80,
+              color: const Color(0xFFEB1555),
+              child: const Center(
+                child: Text(
+                  'RE-CALCULATE YOUR BMI',
+                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                ),
+              ),
+            ),
+          ],
+        ));
   }
 }
