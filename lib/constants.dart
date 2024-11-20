@@ -6,7 +6,7 @@ const KtextColor = Color(0xfffefefe);
 const Kcolor = const Color(0xff0e1125);
 const KregularText = Color(0xff868892);
 const kBottomBarColor = Color(0xFFEB1555);
-const kBottomBarHeight =80;
+const kBottomBarHeight = 80;
 
 const kTextStyle =
     TextStyle(color: KregularText, fontWeight: FontWeight.bold, fontSize: 24);
@@ -18,3 +18,18 @@ const kLargeTextStyle =
     TextStyle(color: KtextColor, fontSize: 48, fontWeight: FontWeight.w600);
 
 const kBottomBarText = TextStyle(fontSize: 24, fontWeight: FontWeight.w600);
+
+const kBmiDesc =  TextStyle(
+  color: Color(0xff209d60),
+  fontSize: 24,
+  fontWeight: FontWeight.bold, // Add this line for bold text
+);
+
+const kBmiTextStyle =
+    TextStyle(color: KtextColor, fontSize: 100, fontWeight: FontWeight.bold);
+
+    const kBmiETextStyle =
+    TextStyle(color: KtextColor, fontSize: 22);
+
+
+

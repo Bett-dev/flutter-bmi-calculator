@@ -1,8 +1,8 @@
-
 import 'package:bmicalculator/results_page.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'constants.dart';
+import 'calculator.dart';
 
 enum Gender { male, female }
 
@@ -97,7 +97,7 @@ class _InputPageState extends State<InputPage> {
                       thumbShape: RoundSliderThumbShape(
                           disabledThumbRadius: 18, enabledThumbRadius: 18),
                       overlayShape: RoundSliderOverlayShape(overlayRadius: 32),
-                      activeTrackColor: Color(0xfffffff),
+                      activeTrackColor: Color(0x0fffffff),
                       inactiveTrackColor: Color(0xff111428),
                       thumbColor: Color(0xffeb1555),
                       overlayColor: Color(0xff31142f),
@@ -206,10 +206,13 @@ class _InputPageState extends State<InputPage> {
           ),
           GestureDetector(
             onTap: () {
+              CalculatorBrain calc = CalculatorBrain(weight: weight, height: height);
+           
+
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => const ResultsPage(),
+                  builder: (context) => ResultsPage(bmiResult: calc.calculateBMI(),resultText: calc.getResult(),resultInterpretation: calc.getInterpretation(),),
                 ),
               );
             },
@@ -229,7 +232,6 @@ class _InputPageState extends State<InputPage> {
     );
   }
 }
-
 
 class Rowbutton extends StatelessWidget {
   final IconData icon;

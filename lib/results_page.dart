@@ -1,8 +1,15 @@
 import 'package:bmicalculator/constants.dart';
+import 'package:bmicalculator/input_page.dart';
 import 'package:flutter/material.dart';
 
 class ResultsPage extends StatelessWidget {
-  const ResultsPage({super.key});
+  const ResultsPage(
+      {required this.bmiResult,
+      required this.resultText,
+      required this.resultInterpretation});
+  final String bmiResult;
+  final String resultText;
+  final String resultInterpretation;
 
   @override
   Widget build(BuildContext context) {
@@ -12,31 +19,56 @@ class ResultsPage extends StatelessWidget {
           title: const Center(child: Text('BMI CALCULATOR')),
         ),
         body: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Container(
-              child: Text(
-                'Your Result',
-                style: kLargeTextStyle,
+            Expanded(
+              flex: 1,
+              child: Container(
+                alignment: Alignment.bottomLeft,
+                margin: EdgeInsets.all(15),
+                child: const Text(
+                  'Your Result',
+                  style: kLargeTextStyle,
+                ),
               ),
             ),
-    
-            const Text(
-              'NORMAL',
-              style: TextStyle(color: Color(0xff209d60),fontSize: 24),
+            Expanded(
+              flex: 5,
+              child: ReusableCard(
+                colour: kActiveCardColor,
+                cardchild: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Text(
+                      resultText,
+                      style: kBmiDesc,
+                    ),
+                    Text(
+                      bmiResult,
+                      style: kBmiTextStyle,
+                    ),
+                    Text(
+                      textAlign: TextAlign.center,
+                      resultInterpretation,
+                      style: kBmiETextStyle,
+                    ),
+                  ],
+                ),
+              ),
             ),
-            const Text(
-              '22.1',
-              style: kNumberTextStyle,
-            ),
-            Container(
-              width: double.infinity,
-              height: 80,
-              color: const Color(0xFFEB1555),
-              child: const Center(
-                child: Text(
-                  'RE-CALCULATE YOUR BMI',
-                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+            GestureDetector(
+              onTap: () {
+                Navigator.pop(context);
+              },
+              child: Container(
+                width: double.infinity,
+                height: 80,
+                color: const Color(0xFFEB1555),
+                child: const Center(
+                  child: Text(
+                    'RE-CALCULATE YOUR BMI',
+                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                  ),
                 ),
               ),
             ),
