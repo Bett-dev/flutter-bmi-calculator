@@ -42,8 +42,8 @@ class _InputPageState extends State<InputPage> {
                     onpress: () => updateGender(currentGender: Gender.male),
                     colour: selectedGender == Gender.male
                         ? kActiveCardColor
-                        : KinativeCardColor,
-                    cardchild: CardContent(
+                        : kinativeCardColor,
+                    cardchild: const CardContent(
                       label: 'MALE',
                       iconn: FontAwesomeIcons.mars,
                     ),
@@ -54,8 +54,8 @@ class _InputPageState extends State<InputPage> {
                     onpress: () => updateGender(currentGender: Gender.female),
                     colour: selectedGender == Gender.female
                         ? kActiveCardColor
-                        : KinativeCardColor,
-                    cardchild: CardContent(
+                        : kinativeCardColor,
+                    cardchild: const CardContent(
                       label: 'FEMALE',
                       iconn: FontAwesomeIcons.venus,
                     ),
@@ -85,7 +85,7 @@ class _InputPageState extends State<InputPage> {
                       const Text(
                         'cm',
                         style: TextStyle(
-                          color: KregularText,
+                          color: kregularText,
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
                         ),
@@ -115,7 +115,7 @@ class _InputPageState extends State<InputPage> {
                   ),
                 ],
               ),
-              colour: KinativeCardColor,
+              colour: kinativeCardColor,
             ),
           ),
           Expanded(
@@ -158,7 +158,7 @@ class _InputPageState extends State<InputPage> {
                         ),
                       ],
                     ),
-                    colour: KinativeCardColor,
+                    colour: kinativeCardColor,
                   ),
                 ),
                 Expanded(
@@ -198,7 +198,7 @@ class _InputPageState extends State<InputPage> {
                         ),
                       ],
                     ),
-                    colour: KinativeCardColor,
+                    colour: kinativeCardColor,
                   ),
                 ),
               ],
@@ -236,15 +236,15 @@ class _InputPageState extends State<InputPage> {
 class Rowbutton extends StatelessWidget {
   final IconData icon;
   final VoidCallback press;
-  Rowbutton({required this.icon, required this.press});
+  const Rowbutton({super.key, required this.icon, required this.press});
 
   @override
   Widget build(BuildContext context) {
     return RawMaterialButton(
       elevation: 6,
-      constraints: BoxConstraints.tight(Size(60, 60)),
-      shape: CircleBorder(),
-      fillColor: Color(0xff1c1f32),
+      constraints: BoxConstraints.tight(const Size(60, 60)),
+      shape: const CircleBorder(),
+      fillColor: const Color(0xff1c1f32),
       onPressed: press,
       child: Icon(
         icon,
@@ -257,7 +257,7 @@ class Rowbutton extends StatelessWidget {
 class CardContent extends StatelessWidget {
   final String label;
   final IconData iconn;
-  CardContent({required this.label, required this.iconn});
+  const CardContent({super.key, required this.label, required this.iconn});
 
   @override
   Widget build(BuildContext context) {
@@ -281,7 +281,7 @@ class ReusableCard extends StatelessWidget {
   final Color colour;
   final Widget? cardchild;
   final VoidCallback? onpress;
-  const ReusableCard({required this.colour, this.cardchild, this.onpress});
+  const ReusableCard({super.key, required this.colour, this.cardchild, this.onpress});
 
   @override
   Widget build(BuildContext context) {

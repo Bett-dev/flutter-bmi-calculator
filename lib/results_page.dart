@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 class ResultsPage extends StatelessWidget {
   const ResultsPage(
-      {required this.bmiResult,
+      {super.key, required this.bmiResult,
       required this.resultText,
       required this.resultInterpretation});
   final String bmiResult;
@@ -14,7 +14,7 @@ class ResultsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Color(0xff0a0d22),
+        backgroundColor: const Color(0xff0a0d22),
         appBar: AppBar(
           title: const Center(child: Text('BMI CALCULATOR')),
         ),
@@ -25,7 +25,7 @@ class ResultsPage extends StatelessWidget {
               flex: 1,
               child: Container(
                 alignment: Alignment.bottomLeft,
-                margin: EdgeInsets.all(15),
+                margin: const EdgeInsets.all(15),
                 child: const Text(
                   'Your Result',
                   style: kLargeTextStyle,
